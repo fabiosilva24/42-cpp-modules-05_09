@@ -2,17 +2,19 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <cmath>
 
 class ScalarConverter
 {
     public:
         static void convert(const std::string &literal);
-        static bool isInt(const std::string &literal);
-        static bool isChar(const std::string &literal);
-        static bool isDouble(const std::string &literal);
-        static bool isFloat(const std::string &literal);
         
 
     private:
+        template <typename T>
+        static bool fromString(const std::string &s, T &value);
 
 };
+
+#include "ScalarConverter.tpp"

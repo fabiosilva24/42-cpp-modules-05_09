@@ -4,63 +4,64 @@
 
 
 
-bool ScalarConverter::isInt(const std::string &literal)
-{
-    if (literal.empty())
-        return false;
-   size_t i = 0;
-
-    if (literal == "+" || literal == "-")
-        i = 1;
-
-    if (i == literal.size())
-    {
-        std::cout << "wrong input, try adding numbers after + or -" << std::endl;
-        return false;
-    }
-    for(; i < literal.size();i++)
-    {
-        if (!isdigit(literal[i]))
-            return false;
-    }
-    return true;
-}
-
-bool ScalarConverter::isChar(const std::string &literal)
-{
-    if (literal.empty())
-        return false;
-
-    if (literal != 1)
-        return false;
-    char c = literal[0];
-    if (std::isprint(c) && !std::isdigit(c))
-        return true;
-    return false;
-}
 void ScalarConverter::convert(const std::string &literal)
 {
-    if (isInt(literal))
+    int int_;
+    double double_;
+    float float_;
+    char char_;
+
+
+    if (std::isnan(literal))
     {
-        int value = stoi(literal);
-        std::cout <<  "int: "  << value << std::endl;
+        std::cout << "char : impossible" << std::endl;
+        std::cout << "int : impossible" << std::endl;
+        std::cout << "float : nanf" << std::endl;
+        std::cout << "double : nanf" << std::endl;
     }
-    if (isChar(literl))
+    if (literal.size() == 1 && !isdigit(literal[0]))
     {
-        char c = 
-    }
-    if ((stoi(literal)) == 2147483647 )
-    {
-        std::cout << "Number Achieved max int" << std::endl;
+        char_ = literal[0];
+        int_ = static_cast<int>(char_);
+        double_ = static_cast<double>(char_);
+        float_ = static_cast<float>(char_);
+        std::cout << "char : '" << char_ << "'" << std::endl;
+        std::cout << "int : " << int_ << std::endl;
+        std::cout << "float : " << float_ << std::endl;
+        std::cout << "double : " << double_ << std::endl;
         return ;
     }
-
-    //Char
-
-    //int
-
-    //float
-
-
-    //double
+    if (fromString<int>(literal, int_))
+    {
+        if (int_ >= 32 && int_ <= 126)
+            std::cout << "char : '" << static_cast<char>(int_) << "'" << std::endl;
+        else
+            std::cout << "non displayable" << std::endl;
+        std::cout << "int : " << static_cast<int>(int_) << std::endl;
+        std::cout << "float : " << static_cast<float>(int_) << "f" << std::endl;
+        std::cout << "double : " << static_cast<double>(int_) << std::endl;
+        return ;
+    }
+    if (fromString<double>(literal, double_))
+    {
+        if (double_ >= 32 && double_ <= 126)
+            std::cout << "char : '" << static_cast<char>(double_) << "'" << std::endl;
+        else
+            std::cout << "non displayable" << std::endl;
+        std::cout << "int : " << static_cast<int>(double_) << std::endl;
+        std::cout << "float : " << static_cast<float>(double_) << "f" << std::endl;
+        std::cout << "double : " << double_ << std::endl;
+        return ;
+    }
+    if (fromString<float>(literal, float_))
+    {
+        if (float_ >= 32 && float_ <= 126)
+            std::cout << "char : '" << static_cast<char>(float_) << "'" << std::endl;
+        else
+            std::cout << "non displayable" << std::endl;
+        std::cout << "int : " << static_cast<int>(float_) << std::endl;
+        std::cout << "float : " << float_ << "f" << std::endl;
+        std::cout << "double : " << static_cast<float>(float_) << std::endl;
+        return ;
+    }
 }

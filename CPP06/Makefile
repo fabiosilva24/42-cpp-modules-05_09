@@ -6,23 +6,23 @@ OBJS = $(SRCS:.cpp=.o)
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-all : $(NAME)
+all: $(NAME)
 
-$(NAME) : $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o  $(NAME)
+$(NAME): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-clean :
-	rm -r $(OBJS)
-
-
-fclean : clean
-	rm -r $(NAME)
+clean:
+	rm -f $(OBJS)
 
 
-re : fclean all
+fclean: clean
+	rm -f $(NAME)
+
+
+re: fclean all
 
 
 
-phony: all, clean, fclean, re
+.phony: all, clean, fclean, re
