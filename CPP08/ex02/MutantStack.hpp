@@ -1,9 +1,20 @@
 #pragma once
+#include <iostream>
+#include <stack>
+#include <deque>
 
 
-class MutantStack : public std::stack<int>
+template<typename T, typename Container = std::deque<T> >
+
+class MutantStack : public std::stack<T, Container>
 {
+    protected:
+        using std::stack<T, Container>::c;
     public:
-
-    private:
-}
+        typedef typename Container::iterator iterator;
+        typedef typename Container::const_iterator const_iterator;
+        iterator begin() { return c.begin();}
+        iterator end() { return c.end();}
+        const_iterator begin() const { return c.begin();}
+        const_iterator end() const { return c.end();}
+};
