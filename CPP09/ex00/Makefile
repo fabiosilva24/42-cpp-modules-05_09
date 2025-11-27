@@ -1,4 +1,4 @@
-NAME = 	MutantStack
+NAME = 	btc
 SRCS = main.cpp\
 		BitcoinExchange.cpp
 

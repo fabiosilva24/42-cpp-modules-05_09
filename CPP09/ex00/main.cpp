@@ -10,8 +10,9 @@ int main(int argc, char **argv)
     }
     try
     {
-        BitcoinExchange btc;
+        BitcoinExchange btc(false);
         btc.LoadDatabase(argv[1]);
+        
     }
     catch(...)
     {

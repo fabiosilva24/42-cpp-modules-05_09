@@ -4,7 +4,7 @@
 
 template <typename T, typename F>
 
-void iter(T* arr, const _sizet len, F func)
+void iter(T* arr, const size_t len, F func)
 {
     if (!arr || !func)
         return ;

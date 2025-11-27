@@ -9,11 +9,12 @@
 class BitcoinExchange
 {
     public: 
-        BitcoinExchange();
+        BitcoinExchange(bool Debug);
         std::map<std::string,float> LoadDatabase(const std::string &filename);
 
     private:
         std::map<std::string, float> _database;
+        bool Debug;
 
 
 };

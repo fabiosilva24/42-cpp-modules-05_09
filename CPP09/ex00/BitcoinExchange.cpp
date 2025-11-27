@@ -1,5 +1,8 @@
 #include "BitcoinExchange.hpp"
 
+BitcoinExchange::BitcoinExchange(bool Debug) : Debug(Debug)
+{
+};
 
 std::map<std::string,float> BitcoinExchange::LoadDatabase(const std::string &filename)
 {
@@ -19,6 +22,10 @@ std::map<std::string,float> BitcoinExchange::LoadDatabase(const std::string &fil
         std::getline(ss, date, ',');
         std::getline(ss, rate, ',');
         prices[date] = std::atof(rate.c_str());
+        if (Debug)
+        {
+            std::cout << date << " " <<rate << std::endl;
+        }
     }
     return prices;
 }
